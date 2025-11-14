@@ -3,28 +3,179 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Регистрация — Тест</title>
+  <title>SmartBuddy AI — Registration</title>
   <style>
-    body { font-family: Arial, sans-serif; background:#eef0f3; margin:0; display:flex; align-items:center; justify-content:center; height:100vh; }
-    .card { background:#fff; width:380px; padding:30px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
-    h1 { margin:0 0 18px; font-size:22px; }
-    label { display:block; margin:12px 0 6px; font-size:14px; }
-    input { width:100%; padding:10px; border-radius:6px; border:1px solid #d1d9df; font-size:14px; box-sizing:border-box; }
-    button { width:100%; margin-top:18px; padding:10px; background:#1976d2; color:white; border:none; border-radius:6px; cursor:pointer; font-size:15px; }
-    .landing { display:none; text-align:center; padding:20px; }
-    .note { margin-top:10px; font-size:13px; color:#555; }
-    .warning { margin-top:14px; font-size:14px; font-weight:600; color:#b00020; }
-    .footer { text-align:center; font-size:12px; color:#888; margin-top:20px; }
+    :root {
+      --bg1: #0f0f19;
+      --bg2: #1a1a29;
+      --card-bg: #ffffff10;
+      --accent: #7b5bff;
+      --accent2: #5fa8ff;
+      --text: #f0f0f0;
+      --text2: #cfcfcf;
+      --radius: 14px;
+      --blur: 14px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px;
+    }
+
+    /* ----- HERO ----- */
+
+    .hero {
+      max-width: 860px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin: 10px 0 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    /* ---- GLOW EFFECT ---- */
+
+    .glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #7b5bff44, transparent 70%);
+      filter: blur(80px);
+      z-index: -1;
+      animation: float 6s infinite ease-in-out alternate;
+    }
+
+    @keyframes float {
+      from { transform: translateY(-20px); }
+      to   { transform: translateY(20px); }
+    }
+
+    .glow2 {
+      left: -200px;
+      top: 200px;
+    }
+    .glow3 {
+      right: -200px;
+      top: 0px;
+    }
+
+    /* ----- CARD ----- */
+
+    .card {
+      width: 360px;
+      backdrop-filter: blur(var(--blur));
+      background: var(--card-bg);
+      border: 1px solid #ffffff22;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 0 25px #0008;
+    }
+
+    .card h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    label {
+      font-size: 14px;
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid #ffffff33;
+      background: #ffffff08;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    button {
+      margin-top: 22px;
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: white;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* ----- RESULT PAGE ----- */
+
+    .landing {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .landing h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .landing p {
+      font-size: 16px;
+      color: var(--text2);
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Регистрация</h1>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
 
+  <div class="hero">
+    <div class="logo">SmartBuddy AI</div>
+    <h1>Ваш персональный агент искусственного интеллекта</h1>
+    <p>Умный помощник, который анализирует, подсказывает, автоматизирует и упрощает ваш рабочий процесс.  
+       Быстро. Удобно. Бесплатно на старте.</p>
+  </div>
+
+  <div class="card">
+    <h2>Создать аккаунт</h2>
     <form id="regForm" autocomplete="off">
       <label for="name">Имя</label>
-      <input id="name" type="text" placeholder="Иван Иванов" />
+      <input id="name" type="text" placeholder="Алексей" />
 
       <label for="email">Email</label>
       <input id="email" type="email" placeholder="you@example.com" />
@@ -39,29 +190,18 @@
     </form>
 
     <div class="landing" id="landing">
-      <h2>Вас взломали, ставьте 10</h2>
-     
-      <p class="warning">Никогда не вводите пароль на непроверенных страницах.</p>
+      <h2>Вас взломали, ставьте 10 🤣</h2>
     </div>
-
-    
+  </div>
 
   <script>
-    // Безопасная имитация: данные НИКУДА не отправляются
     document.getElementById("regForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      // скрываем форму
       document.getElementById("regForm").style.display = "none";
-      // показываем финальное сообщение
       document.getElementById("landing").style.display = "block";
 
-      console.log("Учебная страница: данные не сохраняются и не отправляются.");
-    });
-
-    // предупреждение для тестера
-    document.getElementById("pwd").addEventListener("focus", () => {
-      console.log("Не вводите реальные пароли — это тренировка.");
+      console.log("Это демонстрация. Данные никуда не отправлены.");
     });
   </script>
 
